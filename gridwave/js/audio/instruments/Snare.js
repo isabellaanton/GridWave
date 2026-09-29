@@ -1,0 +1,3 @@
+import Instrument from './Instrument.js';
+/** Caixa de ruído filtrado e corpo tonal breve. */
+export default class Snare extends Instrument{play(t,p={},out){const c=this.ctx,n=c.createBufferSource(),f=c.createBiquadFilter(),g=c.createGain();n.buffer=this.noise.buffer;f.type='highpass';f.frequency.value=p.filter||1300;g.gain.setValueAtTime(.6,t);g.gain.exponentialRampToValueAtTime(.001,t+.22);n.connect(f);f.connect(g);g.connect(out);n.start(t);n.stop(t+.23);const o=c.createOscillator(),og=c.createGain();o.frequency.value=p.body||180;og.gain.setValueAtTime(.35,t);og.gain.exponentialRampToValueAtTime(.001,t+.14);o.connect(og);og.connect(out);o.start(t);o.stop(t+.15)}}

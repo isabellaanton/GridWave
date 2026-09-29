@@ -1,0 +1,2 @@
+/** Catálogo de canais: para adicionar um canal, registre instrumento, cor e id. */
+export default [{id:'kick',name:'KICK',color:'#ef5350'},{id:'snare',name:'SNARE',color:'#42a5f5'},{id:'clap',name:'CLAP',color:'#ffd54f'},{id:'chh',name:'CHH',color:'#26c6da'},{id:'ohh',name:'OHH',color:'#66bb6a'},{id:'tom',name:'TOM',color:'#ec407a'},{id:'lowtom',name:'LOW TOM',color:'#26a69a'},{id:'crash',name:'CRASH',color:'#ab6be0'}];

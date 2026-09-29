@@ -1,0 +1,3 @@
+import NoiseBuffer from './NoiseBuffer.js';
+/** Encapsula contexto de áudio e cadeia de saída master segura. */
+export default class AudioEngine{constructor(){this.context=new (window.AudioContext||window.webkitAudioContext)();this.masterGain=this.context.createGain();this.compressor=this.context.createDynamicsCompressor();this.recordingDestination=this.context.createMediaStreamDestination();this.masterGain.connect(this.compressor);this.compressor.connect(this.context.destination);this.compressor.connect(this.recordingDestination);this.masterGain.gain.value=.8;this.noise=new NoiseBuffer(this.context)} /** Retoma o contexto após gesto do usuário. */ async resume(){if(this.context.state==='suspended')await this.context.resume()}}
