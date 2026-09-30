@@ -1,0 +1,2 @@
+/** Atalhos globais, desativados durante edição de campos. */
+export default class ShortcutsController{constructor(actions){this.actions=actions;this.handler=e=>{if(e.target.closest('input,select,textarea,[contenteditable=true]'))return;if(e.code==='Space'){e.preventDefault();actions.play()}else if(e.key.toLowerCase()==='c')actions.clear();else if(e.key.toLowerCase()==='r')actions.record()};window.addEventListener('keydown',this.handler)}destroy(){window.removeEventListener('keydown',this.handler)}}

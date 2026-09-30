@@ -1,0 +1,3 @@
+import Instrument from './Instrument.js';
+/** Bumbo senoidal com queda de pitch e click transitório. */
+export default class Kick extends Instrument{play(t,p={},out){const c=this.ctx,o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(p.freq||150,t);o.frequency.exponentialRampToValueAtTime(42,t+.16);g.gain.setValueAtTime(.95,t);g.gain.exponentialRampToValueAtTime(.001,t+.48);o.connect(g);g.connect(out);o.start(t);o.stop(t+.5);const click=c.createOscillator(),cg=c.createGain();click.frequency.value=1100;cg.gain.setValueAtTime(.12,t);cg.gain.exponentialRampToValueAtTime(.001,t+.018);click.connect(cg);cg.connect(out);click.start(t);click.stop(t+.02)}}

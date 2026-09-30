@@ -1,0 +1,2 @@
+/** Barramento pub/sub simples para comunicação desacoplada. */
+export default class EventBus{#events=new Map();/** Assina evento e retorna função de cancelamento. */ on(type,fn){const list=this.#events.get(type)||new Set();list.add(fn);this.#events.set(type,list);return()=>list.delete(fn)} /** Publica dado para os assinantes. */ emit(type,data){for(const fn of this.#events.get(type)||[])fn(data)}}
